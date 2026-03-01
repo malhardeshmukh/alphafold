@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #060913;
+  --color-foreground: #f8fafc;
+  
+  --color-obsidian: #0f111a;
+  --color-biocyan: #06b6d4;
+  --color-bioemerald: #10b981;
+  --color-bioviolet: #8b5cf6;
+
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-glass-bg: rgba(15, 17, 26, 0.65);
+  --color-glass-highlight: rgba(255, 255, 255, 0.03);
+
+  --animate-spin-slow: spin 8s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+}
+
+@layer base {
+  :root {
+    --background: var(--color-background);
+    --foreground: var(--color-foreground);
+    color-scheme: dark;
+  }
+  
+  html, body {
+    @apply bg-background text-foreground scroll-smooth overflow-x-hidden;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-glass-bg backdrop-blur-xl border border-glass-border shadow-2xl;
+  }
+  .glass-card {
+    @apply bg-glass-bg backdrop-blur-md border border-glass-border rounded-xl p-6 shadow-lg transition-all duration-300 hover:border-white/20 hover:bg-glass-highlight;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-biocyan via-bioemerald to-bioviolet;
+  }
+}
